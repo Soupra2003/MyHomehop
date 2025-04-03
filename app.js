@@ -101,9 +101,7 @@ main()
     })
 
 //sample route for checking 
-app.get("/",(req,res)=>{
-    res.send("Sucessfull")
-})
+
 
 app.use('/homehop',homehop)
 app.use('/homehop/:id/reviews',review)
