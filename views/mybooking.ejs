@@ -1,0 +1,31 @@
+<% layout('/layouts/template') %>
+
+<div class=" action col-8 offset-2 mt-5">
+    <form action="/myaccount" method="get">
+        <button class="butt2">My Home Stay</button>
+    </form>
+    <form action="/myaccount/mybooking" method="get">
+        <button class="butt">My Bookings</button>
+    </form>
+</div>
+
+<h2 class="bold">My Bookings</h2>
+<div class="bodyContent mt-3">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+        <% bookings.forEach(booking => { %>
+                <div class="card col">
+                    <img src="<%= booking.property.image.url %>" class="card-img-top" alt="property_image"
+                        style="height: 12rem;">
+                    <div class="card-body">
+                        <strong>Property:</strong> <%= booking.property.title %> <br>
+                        <strong>Check-in:</strong> <%= booking.checkin.toDateString() %> <br>
+                        <strong>Check-out:</strong> <%= booking.checkout.toDateString() %><br>
+                        <strong>Price : </strong> &#8377;<%= booking.property.price.toLocaleString('en-IN')%> /night
+                    </div>
+                </div>
+        <% }) %>
+</div>
+</div>
+
+
+

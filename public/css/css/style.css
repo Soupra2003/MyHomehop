@@ -1,0 +1,208 @@
+body{
+    /* font-family: "Plus Jakarta Sans", serif; */
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+.navbar{
+    background-color: rgb(255, 255, 255);
+}
+.nav-link{
+    color: black  !important;
+    margin-left: 20px;
+    font-size: 1.2rem  !important;
+    font-weight: 500 !important;
+}
+footer{
+    padding: 20px 40px;
+    border-top: 1px solid gray;
+}
+.f-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info-links{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+.info-links a{
+    text-decoration: none;
+    color: #8230b9;
+}
+.f-info-sociallinks{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.f-info-sociallinks a { 
+    font-size: 1.5rem;
+    margin-left: 30px;
+    color: #8230b9;
+}
+
+/* index styling */
+.bodyContent{
+    padding: 0px 50px !important;
+}
+.bodyContent h2{
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    width: 100% !important;
+    height: 500px ;
+    border-radius: 1rem !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+    margin-top: 1rem;
+}
+.showlinks{
+    text-decoration: none;
+}
+.card-text{
+    font-weight: 400;
+}
+.add-btn{
+    background-color: #8230b9 !important;
+    color: white !important;
+    font-size: 1.2rem !important;
+    padding: 2px 52px !important;
+    font-weight: 600 !important;
+    margin-top: 20px !important;
+}
+
+/* showPage */
+.card{
+    margin-top: 5px !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+
+}
+.show-img{
+    height: 60vh !important;
+    object-fit:cover !important ;
+}
+.details{
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.details button{
+    margin-left: 19vw !important;
+}
+.action{
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.action2 a{
+    text-decoration: none;
+   color: white;
+}
+.card_title{
+font-size: 2rem !important;
+font-weight: 800 !important;
+}
+.butt{
+    padding: 2px 15px;
+    background-color: #8230b9;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 1px solid rgb(0, 0, 0);
+   border-radius: 5px;
+}
+.butt2{
+    padding: 2px 15px;
+    background-color: #ffffff;
+    color: #8230b9;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 1px solid rgb(0, 0, 0);
+   border-radius: 5px;
+}
+.bold{
+    font-weight: 900;
+    color: #8230b9;
+}
+.oneline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+.review-card{
+    /* border: 1px solid black !important; */
+    padding: 10px !important;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.342);
+}
+.card_border{
+    border: 1px solid black !important;
+}
+
+.delete_btn{
+    padding: 5px 10px;
+    background-color: #8230b9;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+.edit-img img{
+    width: 60vh !important;
+}
+
+/* for comment and review  */
+
+.comment-short {
+    display: inline; /* Display short version inline */
+}
+
+.comment-full {
+    display: none; /* Hide the full comment initially */
+}
+
+.toggle-comment {
+    color:#8230b9;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.toggle-comment:hover {
+    text-decoration: none;
+}
+
+#map{
+    height: 400px;
+    width: 70vw;
+}
+.hover2{
+    color: #8230b9 !important;
+   padding: 6px 15px !important;
+   border-radius: 50px;
+   
+}
+.hover2:hover{
+    background-color: rgba(128, 128, 128, 0.057);
+}
+
+.mapstyle a{
+    color: #8230b9 !important;
+    font-weight: bold;
+}

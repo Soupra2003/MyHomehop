@@ -1,0 +1,54 @@
+<% layout('/layouts/template') %>
+
+
+    <div class="row" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <div class="col-8 offset-2">
+            <h3><b>Edit the details of this Property</b></h3>
+            <form action="/homehop/<%=findcontent._id%>?_method=PUT" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label bold">Title : </label>
+                    <input name="findcontent[title]" type="text" class="form-control" value="<%=findcontent.title%>" required>
+                    <div class="invalid-feedback">Please provide title</div>
+
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label bold">Description : </label>
+                    <textarea name="findcontent[description]" type="text"
+                        class="form-control" required><%=findcontent.description %>
+                    </textarea>
+                    <div class="invalid-feedback">Please provide short Description</div>
+                </div>
+                <div class="mb-3, edit-img" >
+                    <label for="" class="form-label bold">Old Image : </label>
+                    <img src="<%=original_image%>" alt="Old uploaded image " >
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label bold">Price : </label>
+                        <input name="findcontent[price]" type="number" value="<%=findcontent.price %>" class="form-control" required>
+                        <div class="invalid-feedback">Price should be valid</div>
+                    </div>
+
+                    <div class="mb-3 col-md-8" >
+                        <label for="image" class="form-label bold">Upload New Image : </label>
+                        <input name="findcontent[image]" type="file" class="form-control">
+                        <div class="invalid-feedback">Image can't be empty</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label bold">Location : </label>
+                    <input name="findcontent[location]" type="text" value="<%=findcontent.location%>" class="form-control" required>
+                    <div class="invalid-feedback">Location should be valid </div>
+
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label bold">Enter Country : </label>
+                    <input name="findcontent[country]" type="text" value="<%=findcontent.country %>" class="form-control" required>
+                    <div class="invalid-feedback">Country should be valid </div>
+                </div>
+                <button class="btn add-btn offset-lg-5">Update</button>
+                <br><br>
+            </form>
+        </div>
+    </div>
+

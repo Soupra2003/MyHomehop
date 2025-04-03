@@ -1,0 +1,46 @@
+<% layout('/layouts/template') %>
+ 
+    <div class="row" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <div class="col-8 offset-2">
+            <br>
+            <h3><b>Homehop Your Stay</b></h3>
+            <form action="/homehop" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="listing[title]" class="form-label bold">Enter title : </label>
+                    <input name="listing[title]" type="text" placeholder="My home" class="form-control" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide title</div>
+                </div>
+                <div class="mb-3">
+                    <label for="listing[description]" class="form-label bold">Enter description : </label>
+                    <textarea name="listing[description]" type="text" placeholder="A sweet place of all human"
+                        class="form-control" required></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide short description</div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="listing[price]" class="form-label bold">Price : </label>
+                        <input name="listing[price]" type="text" placeholder="0" class="form-control" required>
+                        <div class="invalid-feedback">Price should be valid </div>
+                    </div>
+                    <div class="mb-3 col-md-8" >
+                        <label for="listing[image]" class="form-label bold"> Upload image : </label>
+                        <input name="listing[image]" type="file" class="form-control" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="listing[location]" class="form-label bold">Enter location : </label>
+                    <input name="listing[location]" type="text" placeholder="Panvel,Mumbai" class="form-control" required>
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
+                <div class="mb-3">
+                    <label for="listing[country]" class="form-label bold">Enter Country : </label>
+                    <input name="listing[country]" type="text" placeholder="India" class="form-control" required>
+                    <div class="invalid-feedback">Country should be valid</div>
+                </div>
+                <button class="btn add-btn">ADD</button>
+                <br><br>
+            </form>
+        </div>
+    </div>

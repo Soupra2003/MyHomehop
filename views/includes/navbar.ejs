@@ -1,0 +1,118 @@
+<style>
+  .btn-search {
+    background-color: #8230b9;
+    color: white;
+    border-radius: 25px;
+  }
+
+  .btn-search:hover {
+    background-color: #8230b9;
+    color: white;
+  }
+
+  .serach-inp {
+    border-radius: 25px !important;
+    padding: 0.5rem 2rem 0.5rem 2rem !important;
+  }
+
+  .user-menu {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .user-icon {
+    font-size: 24px;
+    color: #8230b9;
+    margin-right: 10px;
+    margin-left: 20px;
+    padding: 5px;
+    border: 2px solid #8230b9;
+    border-radius: 50%;
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    min-width: 100px;
+    right: 0;
+    top: 30px;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-white border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/homehop"><img
+        src="https://i.ibb.co/gRngKf4/De-Watermark-ai-1736430547344-modified.png"
+        alt="De-Watermark-ai-1736430547344-modified" style="width: 50px;" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/homehop">Explore</a>
+      </div>
+      <div class=" navbar-nav search_box ms-auto">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 serach-inp" type="search" placeholder="Search Destinations">
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link hover2" href="/homehop/new">HomeHop Your Stay</a>
+        <% if (!curUser) { %>
+          <div class="user-menu">
+            <i class="fa-solid fa-user user-icon" onclick="toggleDropdown()"></i>
+            <div class="dropdown" id="dropdownMenu">
+              <a href="/login" class="dropdown-item">Login</a>
+              <a href="/signup" class="dropdown-item">Sign Up</a>
+            </div>
+          </div>
+
+          <% } %>
+
+            <%if(curUser){%>
+              <div class="user-menu">
+                <i class="fa-solid fa-user user-icon" onclick="toggleDropdown()"></i>
+                <div class="dropdown" id="dropdownMenu">
+                  <a href="/myaccount" class="dropdown-item">My Account</a>
+                  <!-- <form action="/homehop/myaccount" class="dropdown-item" method="get">My Account</form> -->
+                  <a class="nav-link" href="/logout">Log out</a>
+                </div>
+              </div>
+
+              <%}%>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function toggleDropdown() {
+    const dropdown = document.getElementById("dropdownMenu");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  }
+
+  document.addEventListener("click", function (event) {
+    const dropdown = document.getElementById("dropdownMenu");
+    const icon = document.querySelector(".user-icon");
+    if (!icon.contains(event.target) && !dropdown.contains(event.target)) {
+      dropdown.style.display = "none";
+    }
+  });
+</script>

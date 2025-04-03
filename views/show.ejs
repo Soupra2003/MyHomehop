@@ -1,0 +1,150 @@
+<% layout('/layouts/template') %>
+    <!-- <script>
+        const mapToken = "<process.env.MAP_TOKEN %>";
+        const coordinates = "<- JSON.stringify(findcontent.geometry.coordinates) %>";
+    </script> -->
+
+    <body>
+
+        <div class="card col-8 offset-2">
+            <h4 class="card_title ">
+                <%= findcontent.title%>
+            </h4>
+            <div class="col- 8 mb-3 mapstyle">
+                <a href="https://www.google.com/maps/search/?api=1&query=<%= encodeURIComponent(findcontent.location + ', ' + findcontent.country) %>" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <%= findcontent.location %>,<%= findcontent.country %>
+                </a>
+            </div>
+            
+            <img src="<%= findcontent.image.url%> " class="card-img-top show-img" alt="Property_image">
+            <div class="card-body">
+                <p class="card-text">
+                    Owned by : <i>
+                        <%= findcontent.owner.username %>
+                    </i> <br>
+                        Description : <%= findcontent.description%> <br>
+                        <% if(curUser && curUser._id.equals(findcontent.owner._id)){%>
+                        Price : &#8377;<%= findcontent.price.toLocaleString('en-IN')%> /night <br> 
+                        <%}%>
+                        Location : <%= findcontent.location%> <br>
+                        Country : <%= findcontent.country%>
+                </p>
+            </div>
+        </div>
+
+        <% if(curUser && curUser._id.equals(findcontent.owner._id)){%>
+            <div class="action col-8 offset-2">
+                <form action="/homehop/<%=findcontent._id%>/edit" method="get">
+                    <button class="butt">Edit</button>
+                </form>
+                <form action="/homehop/<%=findcontent._id%>?_method=Delete" method="post">
+                    <button class="butt"> Delete </button>
+                </form>
+            </div>
+            <%} else { %> 
+                <div class=" col-8 offset-2" style="font-size: 20px;">
+                   <strong>Price : &#8377;<%= findcontent.price.toLocaleString('en-IN')%> /night</strong>
+                </div>
+                
+                <div class="details col-8 offset-2">
+                    
+                    <!-- Check-in and Check-out Date Selection -->
+                    <form action="/homehop/<%= findcontent._id %>/payment" method="post">
+                        <label for="checkin">Check-in :</label>
+                        <input type="date" id="checkin" name="checkin" required>
+            
+                        <label for="checkout">Check-out :</label>
+                        <input type="date" id="checkout" name="checkout" required>
+            
+                        <button class="butt" type="submit">Book Now</button>
+                    </form>
+                </div>
+            <% } %>
+
+                <div class="col-8 offset-2 mt-3">
+                    <% if(curUser && !curUser._id.equals(findcontent.owner._id)){%>
+                        <hr>
+                        <h4>Leave a review</h4>
+                        <form action="/homehop/<%=findcontent._id%>/reviews" method="post" class="needs-validation"
+                            novalidate>
+                            <div class="mb-3">
+                                <label for="rating" class="form-label bold">Rating : </label>
+                                <!-- <input type="range" name="review[rating]" min="1" max="5" id="rating"
+                                    class="form-range"> -->
+
+                                <fieldset class="starability-heart">
+                                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]"
+                                        value="0" checked aria-label="No rating." />
+                                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                                    <label for="first-rate1" title="Terrible">1 star</label>
+                                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                    <label for="first-rate2" title="Not good">2 stars</label>
+                                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                    <label for="first-rate3" title="Average">3 stars</label>
+                                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                    <label for="first-rate4" title="Very good">4 stars</label>
+                                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                    <label for="first-rate5" title="Amazing">5 stars</label>
+                                </fieldset>
+                            </div>
+                            <div class="mb-3">
+                                <label for="comment" class="form-label bold">Comment : </label>
+                                <textarea name="review[comment]" id="comment" rows="3" cols="50"
+                                    class="form-control card_border" required></textarea>
+                                <div class="valid-feedback">look's good!</div>
+                                <div class="invalid-feedback">Comment cannot be empty.</div>
+                            </div>
+                            <button class="btn add-btn mb-3 offset-5" type="submit">POST</button>
+                        </form>
+                        <%}%>
+                </div>
+                <div class="col-10 offset-1 mt-3">
+                    <hr>
+                    <% if(findcontent.reviews.length>0) {%>
+                        <h4 class="bold mb-4">All Reviews </h4>
+                        <div class="row g-3">
+                            <% for(review of findcontent.reviews) { %>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card review-card ms-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title bold">
+                                                @<%= review.author.username || "Anonymous" %>
+                                            </h5>
+                                            <p class="card-text">
+                                                <!-- Comment section -->
+                                                <span class="comment-short" id="short-<%= review._id %>">
+                                                    <%= review.comment.slice(0, 30) %>...
+                                                </span>
+                                                <span class="comment-full" id="full-<%= review._id %>"
+                                                    style="display: none;">
+                                                    <%= review.comment %>
+                                                </span>
+                                                <a href="#" class="toggle-comment" data-id="<%= review._id %>">More</a>
+                                            </p>
+                                            <p class="starability-result card-text" data-rating="<%=review.rating%>">
+                                            </p>
+
+                                            <form
+                                                action="/homehop/<%=findcontent._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                                method="post">
+
+                                                <button class="offset-10 delete_btn"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                        <%}%>
+                </div>
+                <!-- <div class="col-10 offset-1 mb-3">
+                    <h3>Where you'll be</h3>
+                    <div id="map"></div>
+                </div> -->
+
+                <script src="/css/map.js"></script>
+    </body>

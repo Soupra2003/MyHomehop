@@ -1,0 +1,34 @@
+<% layout('/layouts/template') %>
+
+<div class=" action col-8 offset-2 mt-5">
+    <form action="/myaccount" method="get">
+        <button class="butt">My Home Stay</button>
+    </form>
+    <form action="/myaccount/mybooking" method="get">
+        <button class="butt2">My Bookings</button>
+    </form>
+</div>
+
+<div class="bodyContent mt-3">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+        <%for(content of allcontent){%>
+        <% if(curUser && curUser._id.equals(content.owner._id)){%>
+            <a href="/homehop/<%= content._id %>" class="showlinks">
+                <div class="card col">
+                    <img src="<%= content.image.url %>" class="card-img-top" alt="property_image"
+                        style="height: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                <%= content.title%>
+                            </b> <br>
+                            &#8377; <%= content.price.toLocaleString('en-IN') %> /night
+                                <i class="afterTax"> &nbsp; + 18% GST</i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        <% }%>
+        <%}%>
+    </div>
+</div>
