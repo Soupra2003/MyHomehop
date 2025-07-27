@@ -21,21 +21,21 @@
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **Templating Engine**: EJS
-- **Authentication**: (If used) Passport.js, bcrypt, etc.
+- **Authentication**: Passport.js, bcrypt, etc.
 
 ---
 
 ## 📁 Folder Structure
 
 MyHomehop/
-├── controllers/ # Route logic
-├── - models/ # MongoDB models
-├── - public/ # Static assets (CSS, JS, images)
-├── - routes/ # Express route handlers
-├── - views/ # EJS templates
-├── - .env # Environment variables
-├── - app.js # Main application file
-└── - package.json # Project metadata
+- controllers/ # Route logic
+- models/ # MongoDB models
+- public/ # Static assets (CSS, JS, images)
+- routes/ # Express route handlers
+- views/ # EJS templates
+- .env # Environment variables
+- app.js # Main application file
+- package.json # Project metadata
 
 ---
 
