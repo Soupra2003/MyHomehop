@@ -1,6 +1,6 @@
 # 🏡 MyHomehop
 
-**MyHomehop** is a modern and responsive real estate platform designed to help users easily buy, rent, or explore properties. The platform provides an intuitive user interface, advanced search and filtering options, and user authentication features.
+**MyHomehop** is a modern and responsive real estate platform designed to help users easily buy, rent, or explore properties. The platform provides an intuitive user interface, and user authentication features.
 
 ---
 
@@ -29,13 +29,13 @@
 
 MyHomehop/
 ├── controllers/ # Route logic
-├── models/ # MongoDB models
-├── public/ # Static assets (CSS, JS, images)
-├── routes/ # Express route handlers
-├── views/ # EJS templates
-├── .env # Environment variables
-├── app.js # Main application file
-└── package.json # Project metadata
+├── - models/ # MongoDB models
+├── - public/ # Static assets (CSS, JS, images)
+├── - routes/ # Express route handlers
+├── - views/ # EJS templates
+├── - .env # Environment variables
+├── - app.js # Main application file
+└── - package.json # Project metadata
 
 ---
 
